@@ -14,18 +14,14 @@ const BlogSection = ({ blogs, user, handleDelete }) => {
 
   return (
     <div>
-      <form class="form-inline">
+      <form className="form-inline">
         <input
-          class="form-control mr-sm-2"
+          className="form-control mr-sm-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
           onChange={handleChange}
         />
-
-        <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">
-          Search
-        </button>
       </form>
       <div className="blog-heading text-start py-2 mb-4 mx-auto">
         <h1 className="">Artists</h1>

@@ -17,20 +17,25 @@ import { toast } from "react-toastify";
 const initialState = {
   fullname: "",
   tags: "",
-  trending: "no",
+
   category: "",
   description: "",
+  youtube: "",
+  instagram: "",
+  mail: "",
+  website: "",
 };
 
 const categoryOption = [
   "Music",
   "Dance",
-  "Actor",
+  "Theatre",
   "Painter",
   "Designer",
-  "Guitarist",
-  "Rapping",
-  "DJ",
+  "Writer",
+  "Photography",
+  "Tattoo",
+  "Graffiti",
 ];
 
 const AddEditBlog = ({ user, setActive }) => {
@@ -42,7 +47,17 @@ const AddEditBlog = ({ user, setActive }) => {
 
   const navigate = useNavigate();
 
-  const { fullname, tags, category, trending, description } = form;
+  const {
+    fullname,
+    tags,
+    category,
+
+    description,
+    youtube,
+    instagram,
+    mail,
+    website,
+  } = form;
 
   useEffect(() => {
     const uploadFile = () => {
@@ -103,17 +118,36 @@ const AddEditBlog = ({ user, setActive }) => {
     setForm({ ...form, tags: e.target.value });
   };
 
-  const handleTrending = (e) => {
-    setForm({ ...form, trending: e.target.value });
-  };
-
   const onCategoryChange = (e) => {
     setForm({ ...form, category: e.target.value });
   };
 
+  const handleYoutubeChange = (e) => {
+    setForm({ ...form, youtube: e.target.value });
+  };
+
+  const handleMailChange = (e) => {
+    setForm({ ...form, mail: e.target.value });
+  };
+  const handleWebsiteChange = (e) => {
+    setForm({ ...form, website: e.target.value });
+  };
+  const handleInstagramChange = (e) => {
+    setForm({ ...form, instagram: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (category && tags && fullname && description && trending) {
+    if (
+      category &&
+      tags &&
+      fullname &&
+      description &&
+      youtube &&
+      instagram &&
+      mail &&
+      website
+    ) {
       if (!id) {
         try {
           await addDoc(collection(db, "blogs"), {
@@ -122,7 +156,7 @@ const AddEditBlog = ({ user, setActive }) => {
             author: user.displayName,
             userId: user.uid,
           });
-          toast.success("Blog created successfully");
+          toast.success("Post created successfully");
         } catch (err) {
           console.log(err);
         }
@@ -134,7 +168,7 @@ const AddEditBlog = ({ user, setActive }) => {
             author: user.displayName,
             userId: user.uid,
           });
-          toast.success("Blog updated successfully");
+          toast.success("Post updated successfully");
         } catch (err) {
           console.log(err);
         }
@@ -177,33 +211,7 @@ const AddEditBlog = ({ user, setActive }) => {
                   onChange={handleTags}
                 />
               </div>
-              <div className="col-12 py-3">
-                <p className="trending">Is it trending blog ?</p>
-                <div className="form-check-inline mx-2">
-                  <input
-                    type="radio"
-                    className="form-check-input"
-                    value="yes"
-                    name="radioOption"
-                    checked={trending === "yes"}
-                    onChange={handleTrending}
-                  />
-                  <label htmlFor="radioOption" className="form-check-label">
-                    Yes&nbsp;
-                  </label>
-                  <input
-                    type="radio"
-                    className="form-check-input"
-                    value="no"
-                    name="radioOption"
-                    checked={trending === "no"}
-                    onChange={handleTrending}
-                  />
-                  <label htmlFor="radioOption" className="form-check-label">
-                    No
-                  </label>
-                </div>
-              </div>
+
               <div className="col-12 py-3">
                 <select
                   value={category}
@@ -235,6 +243,46 @@ const AddEditBlog = ({ user, setActive }) => {
                 />
               </div>
 
+              <div className="col-12 py-3">
+                <input
+                  type="text"
+                  className="form-control input-text-box"
+                  placeholder="Website"
+                  name="website"
+                  value={website}
+                  onChange={handleWebsiteChange}
+                />
+              </div>
+              <div className="col-12 py-3">
+                <input
+                  type="text"
+                  className="form-control input-text-box"
+                  placeholder="Youtube"
+                  name="youtube"
+                  value={youtube}
+                  onChange={handleYoutubeChange}
+                />
+              </div>
+              <div className="col-12 py-3">
+                <input
+                  type="text"
+                  className="form-control input-text-box"
+                  placeholder="Mail"
+                  name="mail"
+                  value={mail}
+                  onChange={handleMailChange}
+                />
+              </div>
+              <div className="col-12 py-3">
+                <input
+                  type="text"
+                  className="form-control input-text-box"
+                  placeholder="Instagram"
+                  name="instagram"
+                  value={instagram}
+                  onChange={handleInstagramChange}
+                />
+              </div>
               <div className="col-12 py-3 text-center">
                 <button
                   className="btn btn-add"
