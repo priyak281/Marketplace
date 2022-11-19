@@ -5,8 +5,11 @@ import transitions from "bootstrap";
 const Header = ({ active, setActive, user, handleLogout }) => {
   const userId = user?.uid;
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid bg-faded padding-media">
+    <nav className="navbar navbar-expand-lg navbar-light ">
+      <div
+        className="container-fluid bg-faded padding-media"
+        style={{ backgroundColor: "#EFE9F4" }}
+      >
         <div className="container padding-media">
           <nav className="navbar navbar-toggleable-md navbar-light">
             <button
@@ -53,16 +56,16 @@ const Header = ({ active, setActive, user, handleLogout }) => {
                   {userId ? (
                     <>
                       <div className="profile-logo">
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                          alt="logo"
+                        <p
                           style={{
-                            width: "30px",
-                            height: "30px",
-                            borderRadius: "50%",
                             marginTop: "12px",
+                            marginLeft: "5px",
+                            color: "#6C63FF",
+                            fontWeight: "bold",
                           }}
-                        />
+                        >
+                          Welcome!
+                        </p>
                       </div>
                       <p style={{ marginTop: "12px", marginLeft: "5px" }}>
                         {user?.displayName}

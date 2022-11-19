@@ -40,7 +40,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: "#C8BCDD" }}>
       <Header
         setActive={setActive}
         active={active}

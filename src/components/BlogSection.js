@@ -24,7 +24,9 @@ const BlogSection = ({ blogs, user, handleDelete }) => {
         />
       </form>
       <div className="blog-heading text-start py-2 mb-4 mx-auto">
-        <h1 className="">Artists</h1>
+        <h1 className="" style={{ fontWeight: "bold", color: "#45418d" }}>
+          Artists
+        </h1>
       </div>
       {blogs
         ?.filter((item) => {
@@ -55,7 +57,7 @@ const BlogSection = ({ blogs, user, handleDelete }) => {
                   {item.timestamp.toDate().toDateString()}
                 </span>
               </div>
-              <div className="short-description text-start">
+              <div className="short-description text-start" style={{}}>
                 {excerpt(item.description, 120)}
               </div>
               <Link to={`/detail/${item.id}`}>
